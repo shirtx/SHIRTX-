@@ -157,7 +157,7 @@ input[type=range]{
 <div class="panel">
 
   <img class="logo"
-       src="IMG_20260923_085945.png"
+       src="Messenger_creation_CAB97B26-CF67-4DE9-BFCB-E2CEDE287D09.jpeg"
        alt="SHIRTX">
 
   <h1>SHIRTX</h1>
@@ -204,8 +204,8 @@ input[type=range]{
     >
   </div>
 
-  <button class="mainBtn" onclick="activate()">
-    ATIVAR PAINEL
+  <button class="mainBtn" onclick="openFFMax()">
+    Abrir Free Fire Max
   </button>
 
   <div class="status" id="status">
@@ -223,13 +223,9 @@ function valueChange(value){
   document.getElementById("value").textContent=value;
 }
 
-function activate(){
-  const status=document.getElementById("status");
-  status.textContent="Status: ativado";
-
-  setTimeout(()=>{
-    status.textContent="Status: aguardando";
-  },3000);
+function openFFMax(){
+  window.location.href =
+    "intent://#Intent;package=com.dts.freefiremax;scheme=freefiremax;end";
 }
 </script>
 
