@@ -1,237 +1,451 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
-  <link rel="manifest" href="./manifest.json">
-
-  <title>SHIRTX</title>
-</head>
-
+<link rel="manifest" href="./manifest.json">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHIRTX PANEL</title>
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-body{
-  min-height:100vh;
-  background:#08090d;
-  color:white;
-  font-family:Arial,sans-serif;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
-}
-
-.panel{
-  width:100%;
-  max-width:390px;
-  background:#11131a;
-  border:1px solid #292d38;
-  border-radius:22px;
-  padding:22px;
-  box-shadow:0 0 35px rgba(0,0,0,.6);
-}
-
-.logo{
-  width:78px;
-  height:78px;
-  border-radius:20px;
-  margin:auto;
-  display:block;
-  object-fit:cover;
-  border:2px solid #333844;
-}
-
-h1{
-  text-align:center;
-  margin-top:13px;
-  font-size:25px;
-}
-
-.sub{
-  text-align:center;
-  color:#858b99;
-  font-size:13px;
-  margin-top:5px;
-  margin-bottom:22px;
-}
-
-.section{
-  font-size:13px;
-  color:#858b99;
-  margin-bottom:9px;
-}
-
-.option{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  background:#191c24;
-  border:1px solid #282d38;
-  border-radius:14px;
-  padding:15px;
-  margin-bottom:10px;
-}
-
-.option span{
-  font-weight:bold;
-}
-
-.toggle{
-  width:45px;
-  height:25px;
-  border:0;
-  border-radius:20px;
-  background:#343945;
-  position:relative;
-  cursor:pointer;
-}
-
-.toggle::after{
-  content:"";
-  position:absolute;
-  width:19px;
-  height:19px;
-  border-radius:50%;
-  background:white;
-  left:3px;
-  top:3px;
-  transition:.2s;
-}
-
-.toggle.active{
-  background:#39d98a;
-}
-
-.toggle.active::after{
-  left:23px;
-}
-
-.sliderBox{
-  background:#191c24;
-  border:1px solid #282d38;
-  border-radius:14px;
-  padding:15px;
-  margin-top:4px;
-}
-
-.sliderTop{
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:12px;
-}
-
-input[type=range]{
-  width:100%;
-}
-
-.mainBtn{
-  width:100%;
-  margin-top:18px;
-  padding:15px;
-  border:0;
-  border-radius:14px;
-  background:#ffffff;
-  color:#090a0d;
-  font-weight:bold;
-  font-size:15px;
-  cursor:pointer;
-}
-
-.mainBtn:active{
-  transform:scale(.97);
-}
-
-.status{
-  text-align:center;
-  color:#777d89;
-  font-size:12px;
-  margin-top:14px;
-}
+    * {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+    }
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        min-height: 100vh;
+        background: #05080a;
+        color: #fff;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow-x: hidden;
+    }
+    .page {
+        width: 100%;
+        max-width: 470px;
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .panel {
+        width: 100%;
+        background: #101419;
+        border: 1px solid #252c32;
+        border-radius: 24px;
+        padding: 24px 14px 28px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+    }
+    .profile {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 12px;
+        border-radius: 20px;
+        overflow: hidden;
+        background: #f1f1f1;
+        border: 2px solid #5a6065;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .profile img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+    .title {
+        text-align: center;
+        font-size: 28px;
+        line-height: 1;
+        font-weight: 800;
+        margin-bottom: 16px;
+        letter-spacing: 0.5px;
+    }
+    .top-buttons {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        background: #05090b;
+        padding: 5px;
+        border-radius: 18px;
+        margin-bottom: 16px;
+    }
+    .top-btn {
+        height: 52px;
+        border-radius: 14px;
+        border: 1px solid #2b3238;
+        background: #101519;
+        color: #88929b;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.02), 0 3px 0 #050708;
+        transition: all 0.2s ease;
+    }
+    .top-btn.active {
+        background: #182026;
+        color: #ffffff;
+        border-color: #38424b;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 2px 0 #050708;
+    }
+    .top-btn:active {
+        transform: scale(0.97);
+    }
+    .function-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .function-card {
+        width: 100%;
+        height: 65px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 16px;
+        background: #191e22;
+        border: 1px solid #282f34;
+        border-radius: 16px;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.015), 0 2px 4px rgba(0,0,0,0.2);
+    }
+    .function-name {
+        font-size: 15px;
+        font-weight: 700;
+    }
+    .switch {
+        position: relative;
+        width: 52px;
+        height: 30px;
+        flex-shrink: 0;
+    }
+    .switch input {
+        display: none;
+    }
+    .slider {
+        position: absolute;
+        left: 0; top: 0; right: 0; bottom: 0;
+        background: #303740;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: .2s;
+    }
+    .slider:before {
+        content: "";
+        position: absolute;
+        width: 22px;
+        height: 22px;
+        left: 4px;
+        top: 4px;
+        border-radius: 50%;
+        background: #fff;
+        transition: .2s;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+    .switch input:checked + .slider {
+        background: #1685ff;
+    }
+    .switch input:checked + .slider:before {
+        transform: translateX(22px);
+    }
+    .section-title {
+        margin: 18px 0px 6px;
+        font-size: 13px;
+        color: #aeb4ba;
+        font-weight: 600;
+        letter-spacing: 0.2px;
+    }
+    .sensitivity {
+        width: 100%;
+        background: #191e22;
+        border: 1px solid #282f34;
+        border-radius: 16px;
+        padding: 16px;
+    }
+    .sensitivity-head {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 14px;
+    }
+    .sensitivity-name {
+        font-size: 15px;
+        font-weight: 700;
+    }
+    .value {
+        font-size: 17px;
+        font-weight: 800;
+    }
+    .range-wrap {
+        width: 100%;
+    }
+    input[type="range"] {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 100%;
+        height: 8px;
+        border-radius: 10px;
+        background: linear-gradient(to right, #1685ff 0%, #1685ff 0%, #f0f0f0 0%, #f0f0f0 100%);
+        outline: none;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #1685ff;
+        border: none;
+        cursor: pointer;
+    }
+    input[type="range"]::-moz-range-thumb {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #1685ff;
+        border: none;
+        cursor: pointer;
+    }
+    .game-area {
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        gap: 12px;
+        padding: 8px 0;
+    }
+    .game-btn {
+        width: 100%;
+        height: 64px;
+        border-radius: 30px;
+        border: 2px solid #202020;
+        background: #080808;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        cursor: pointer;
+        box-shadow: inset 0 1px 2px rgba(255,255,255,0.04);
+        transition: transform 0.1s ease;
+    }
+    .game-btn:active {
+        transform: scale(0.98);
+    }
+    .game-icon {
+        font-size: 20px;
+        line-height: 1;
+    }
+    .toast {
+        position: fixed;
+        left: 50%;
+        bottom: 25px;
+        transform: translateX(-50%) translateY(20px);
+        background: #191e22;
+        border: 1px solid #343b41;
+        border-radius: 12px;
+        padding: 11px 17px;
+        font-size: 14px;
+        opacity: 0;
+        pointer-events: none;
+        transition: .25s;
+        z-index: 999;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.45);
+    }
+    .toast.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
 </style>
 </head>
-
 <body>
+<div class="page">
+<main class="panel">
 
-<div class="panel">
-
-  <img class="logo"
-       src="Messenger_creation_CAB97B26-CF67-4DE9-BFCB-E2CEDE287D09.jpeg"
-       alt="SHIRTX">
-
-  <h1>SHIRTX</h1>
-  <div class="sub">CONTROL PANEL</div>
-
-  <div class="section">FUNCTIONS</div>
-
-  <div class="option">
-    <span>Precisão</span>
-    <button class="toggle" onclick="toggle(this)"></button>
-  </div>
-
-  <div class="option">
-    <span>Controle de Recuo</span>
-    <button class="toggle" onclick="toggle(this)"></button>
-  </div>
-
-  <div class="option">
-    <span>Otimizar Touch</span>
-    <button class="toggle" onclick="toggle(this)"></button>
-  </div>
-
-  <div class="option">
-    <span>Modo FPS</span>
-    <button class="toggle" onclick="toggle(this)"></button>
-  </div>
-
-  <div class="section" style="margin-top:18px;">
-    SENSIBILIDADE
-  </div>
-
-  <div class="sliderBox">
-    <div class="sliderTop">
-      <span>Precisão</span>
-      <b id="value">50</b>
+    <!-- รูปโปรไฟล์ -->
+    <div class="profile">
+        <img src="Messenger_creation_CAB97B26-CF67-4DE9-BFCB-E2CEDE287D09.jpeg" alt="SHIRTX">
     </div>
 
-    <input
-      type="range"
-      min="0"
-      max="100"
-      value="50"
-      oninput="valueChange(this.value)"
-    >
-  </div>
+    <!-- ชื่อ -->
+    <div class="title">SHIRTX</div>
 
-  <button class="mainBtn" onclick="openFFMax()">
-    Abrir Free Fire Max
-  </button>
+    <!-- ปุ่มด้านบน -->
+    <div class="top-buttons">
+        <button id="btnFunction" class="top-btn active" type="button" onclick="switchTab('function')">Function</button>
+        <button id="btnGame" class="top-btn" type="button" onclick="switchTab('game')">Select a game</button>
+    </div>
 
-  <div class="status" id="status">
-    Status: aguardando
-  </div>
+    <!-- หน้า 1: ฟังก์ชัน -->
+    <div id="functionTab">
+        <div class="function-list">
+            <div class="function-card">
+                <span class="function-name">FOV</span>
+                <label class="switch">
+                    <input type="checkbox" autocomplete="off" onchange="toggleFunction(this, 'FOV')">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="function-card">
+                <span class="function-name">Controle de Recuo</span>
+                <label class="switch">
+                    <input type="checkbox" autocomplete="off" onchange="toggleFunction(this, 'Controle de Recuo')">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="function-card">
+                <span class="function-name">Otimizar Touch</span>
+                <label class="switch">
+                    <input type="checkbox" autocomplete="off" onchange="toggleFunction(this, 'Otimizar Touch')">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="function-card">
+                <span class="function-name">Modo FPS</span>
+                <label class="switch">
+                    <input type="checkbox" autocomplete="off" onchange="toggleFunction(this, 'Modo FPS')">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
 
+        <div class="section-title">SENSIBILIDADE</div>
+
+        <div class="sensitivity">
+            <div class="sensitivity-head">
+                <span class="sensitivity-name">FOV</span>
+                <span class="value" id="precisionValue">0%</span>
+            </div>
+            <div class="range-wrap">
+                <input id="precisionRange" type="range" min="0" max="360" value="0" autocomplete="off" oninput="updateRange(this, 'precisionValue')">
+            </div>
+        </div>
+    </div>
+
+    <!-- หน้า 2: เลือกเกม -->
+    <div id="gameTab" class="game-area">
+        <!-- FREE FIRE -->
+        <button class="game-btn" onclick="openGame('com.dts.freefireth')">
+            <span class="game-icon">✈</span>
+            <span>FREE FIRE</span>
+        </button>
+        <!-- FREE FIRE MAX -->
+        <button class="game-btn" onclick="openGame('com.dts.freefiremax')">
+            <span class="game-icon">❖</span>
+            <span>FREE FIRE MAX</span>
+        </button>
+    </div>
+
+</main>
 </div>
 
+<div class="toast" id="toast"></div>
+
 <script>
-function toggle(button){
-  button.classList.toggle("active");
+let currentTab = 'function';
+
+function switchTab(tab) {
+    if (currentTab === tab) return;
+
+    currentTab = tab;
+    const functionTab = document.getElementById('functionTab');
+    const gameTab = document.getElementById('gameTab');
+    const btnFunction = document.getElementById('btnFunction');
+    const btnGame = document.getElementById('btnGame');
+
+    if (tab === 'function') {
+        functionTab.style.display = 'block';
+        gameTab.style.display = 'none';
+        btnFunction.classList.add('active');
+        btnGame.classList.remove('active');
+    } else if (tab === 'game') {
+        functionTab.style.display = 'none';
+        gameTab.style.display = 'flex';
+        btnFunction.classList.remove('active');
+        btnGame.classList.add('active');
+    }
 }
 
-function valueChange(value){
-  document.getElementById("value").textContent=value;
+function openGame(packageName) {
+    showToast("Opening Game...");
+
+    if (window.AndroidBridge && window.AndroidBridge.openApp) {
+        window.AndroidBridge.openApp(packageName);
+        return;
+    }
+
+    let schemename = "freefire";
+    if (packageName === "com.dts.freefiremax") {
+        schemename = "freefiremax";
+    }
+
+    window.location.href = 
+        "intent://#Intent;scheme=" + schemename + 
+        ";package=" + packageName + ";end";
 }
 
-function openFFMax(){
-  window.location.href =
-    "intent://#Intent;package=com.dts.freefiremax;scheme=freefiremax;end";
+function showToast(text) {
+    const toast = document.getElementById('toast');
+    toast.textContent = text;
+    toast.classList.add('show');
+    setTimeout(function() {
+        toast.classList.remove('show');
+    }, 1500);
 }
+
+function toggleFunction(element, name) {
+    if (element.checked) {
+        showToast(name + " ON");
+    } else {
+        showToast(name + " OFF");
+    }
+}
+
+function updateRange(range, valueId) {
+    const value = Number(range.value);
+    const min = Number(range.min);
+    const max = Number(range.max);
+    const percent = ((value - min) / (max - min)) * 100;
+
+    document.getElementById(valueId).textContent = value + '%';
+    range.style.background = 
+        "linear-gradient(to right, " + 
+        "#1685ff 0%, " + 
+        "#1685ff " + percent + "%, " + 
+        "#f0f0f0 " + percent + "%, " + 
+        "#f0f0f0 100%)";
+}
+
+window.addEventListener('load', function() {
+    const switches = document.querySelectorAll('.switch input');
+    switches.forEach(function(item) {
+        item.checked = false;
+    });
+
+    const range = document.getElementById('precisionRange');
+    if (range) {
+        range.value = 0;
+        updateRange(range, "precisionValue");
+    }
+});
 </script>
 
+<script>
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js");
+    });
+}
+</script>
 </body>
 </html>
