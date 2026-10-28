@@ -1,3 +1,4 @@
+
 {
   "name": "CapCut",
   "short_name": "CapCut",
@@ -8,15 +9,9 @@
   "icons": [
     {
       "src": "./IMG_20260924_182312.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "./IMG_20260924_182312.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ]
 }
