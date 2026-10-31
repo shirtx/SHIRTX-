@@ -272,24 +272,19 @@
 <div class="page">
 <main class="panel">
 
-    <!-- รูปโปรไฟล์ -->
     <div class="profile">
         <img src="Messenger_creation_CAB97B26-CF67-4DE9-BFCB-E2CEDE287D09.jpeg" alt="SHIRTX">
     </div>
 
-    <!-- ชื่อ -->
     <div class="title">SHIRTX</div>
 
-    <!-- ปุ่มด้านบน -->
     <div class="top-buttons">
         <button id="btnFunction" class="top-btn active" type="button" onclick="switchTab('function')">Function</button>
         <button id="btnGame" class="top-btn" type="button" onclick="switchTab('game')">Select a game</button>
     </div>
 
-    <!-- หน้า 1: ฟังก์ชัน -->
     <div id="functionTab">
         <div class="function-list">
-            <!-- ปุ่มที่ 1 (เปลี่ยนกลับเป็น Precisão) -->
             <div class="function-card">
                 <span class="function-name">Precisão</span>
                 <label class="switch">
@@ -322,26 +317,23 @@
 
         <div class="section-title">SENSIBILIDADE</div>
 
-        <!-- สไลเดอร์ด้านล่าง (เป็น FOV 0-360%) -->
         <div class="sensitivity">
             <div class="sensitivity-head">
                 <span class="sensitivity-name">FOV</span>
                 <span class="value" id="precisionValue">0%</span>
             </div>
             <div class="range-wrap">
-                <input id="precisionRange" type="range" min="0" max="360" value="0" autocomplete="off" oninput="updateRange(this, 'precisionValue')">
+                <!-- ปรับ max เป็น 200 ตรงนี้ -->
+                <input id="precisionRange" type="range" min="0" max="200" value="0" autocomplete="off" oninput="updateRange(this, 'precisionValue')">
             </div>
         </div>
     </div>
 
-    <!-- หน้า 2: เลือกเกม -->
     <div id="gameTab" class="game-area">
-        <!-- FREE FIRE -->
         <button class="game-btn" onclick="openGame('com.dts.freefireth')">
             <span class="game-icon">✈</span>
             <span>FREE FIRE</span>
         </button>
-        <!-- FREE FIRE MAX -->
         <button class="game-btn" onclick="openGame('com.dts.freefiremax')">
             <span class="game-icon">❖</span>
             <span>FREE FIRE MAX</span>
